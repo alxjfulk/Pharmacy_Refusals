@@ -43,7 +43,8 @@ def compute_matrices(
     # ———————————————
     # Setup & I/O prep
     # ———————————————
-    place = f"{city}, {state}"
+    # place = f"{city}, {state}"
+    place = f"{city} County"
     today = date.today().isoformat()
     file_name_city  = city.replace(' ', '_') #replace spaces in city and state names for saving files
     file_name_state = state.replace(' ', '_')
@@ -68,7 +69,7 @@ def compute_matrices(
     # ———————————————
     if do_drive:
         print(f"→ Computing drive‐time for {place}")
-        Gd = ox.graph_from_place(place, network_type='drive', simplify=True)
+        Gd = ox.graph_from_place(place, network_type='drive', simplify=False)
         ox.routing.add_edge_speeds(Gd, fallback=40.2336)
         ox.routing.add_edge_travel_times(Gd)
         nodes_drive = ox.distance.nearest_nodes(Gd, df.long, df.lat)
@@ -83,7 +84,7 @@ def compute_matrices(
                 weight='travel_time'
             )
 
-        with mp.Pool(2 * mp.cpu_count()) as pool:
+        with mp.Pool(round(1.4 * mp.cpu_count())) as pool:
             drive_results = pool.map(_drive_time, pairs_drive)
         D = np.zeros((n, n))
         for idx, (i, j) in enumerate(pairs_drive):
@@ -114,7 +115,7 @@ def compute_matrices(
             )
             return length_m / 1.42
 
-        with mp.Pool(2 * mp.cpu_count()) as pool:
+        with mp.Pool(round(1.4 * mp.cpu_count())) as pool:
             walk_results = pool.map(_walk_time, pairs_walk)
         W = np.zeros((n, n))
         for idx, (i, j) in enumerate(pairs_walk):

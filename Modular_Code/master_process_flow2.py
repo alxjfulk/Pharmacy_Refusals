@@ -42,7 +42,7 @@ def main():
 
     # Step 2: Tie census tract info to pharmacies
     print("Step 2: Attaching census tract information...")
-    # tie_census_info(pharmacy_output, tract_output)
+    # tie_census_info(pharmacy_output, tract_output, max_distance_miles=3)
 
     # Step 3: Compute raw walk & drive travel-time matrices
     print("Step 3: Computing raw walk & drive matrices...")
