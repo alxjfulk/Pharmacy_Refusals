@@ -11,11 +11,6 @@ A replacement for the core bits of the `censusgeocode` package:
 - Geocode single-line addresses and (lon, lat) to get tract GEOIDs
 - Fetch ACS5 variables for a tract
 
-Design goals:
-- No fragile transitive deps (works with requests>=2.32, urllib3>=2)
-- Clear, explicit timeouts and retries
-- Small, readable, well-documented functions that you can extend
-
 Author: (Alex Fulk)
 """
 
