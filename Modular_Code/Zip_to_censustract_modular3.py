@@ -26,7 +26,8 @@ import pandas as pd
 import csv
 from us import states
 from tqdm import tqdm
-import censusgeocode as cg
+#import censusgeocode as cg
+import cg_compat as cg
 from census import Census
 import osmnx as ox
 
@@ -84,7 +85,7 @@ def tie_census_info(input_folder, output_folder, max_distance_miles):
     # cache for ACS tables by state abbreviation
     acs_cache = {}
     # Census API client (replace with your key)
-    C = Census("985901667535f61f5ea97bfbf8e4fdfcd8c743c4")
+    C = Census("")
 
     for path in primary_files:
         filename    = os.path.basename(path)
