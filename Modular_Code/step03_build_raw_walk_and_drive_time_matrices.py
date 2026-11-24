@@ -152,7 +152,7 @@ import numpy as np
 import pandas as pd
 import requests
 
-from pipeline_common_260801 import (
+from pipeline_common import (
     ANALYSIS_TAG_COLUMN,
     file_sha256,
     ordered_id_checksum,
@@ -706,7 +706,7 @@ def compute_matrices_dijkstra(
 
 
 # Run Step 3 for one city from the command line, without Step 0. For example:
-#     python step03_build_raw_walk_and_drive_time_matrices_260801.py
+#     python step03_build_raw_walk_and_drive_time_matrices.py
 #         <tract_data.csv> <step03_raw_travel folder> Milwaukee WI test_261011
 # The option defaults match Step 0's settings (0.02-degree buffer, 1.42 m/s walking
 # speed, 4 download attempts, 60-second first wait). Add --no-drive or --no-walk to

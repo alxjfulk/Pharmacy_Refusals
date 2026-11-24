@@ -107,7 +107,7 @@ from __future__ import annotations
 import os
 from datetime import date  # only for the date.today() option of ANALYSIS_RUN_TAG
 from pathlib import Path
-# Folder that holds this file and the other pipeline modules (pipeline_common_260801.py,
+# Folder that holds this file and the other pipeline modules (pipeline_common.py,
 # step01_..., and so on). Changing the working directory to it lets the imports
 # below find those modules when this file is run from Spyder, and makes OSMnx put
 # its download cache (./cache) in the code folder. If the folder doesn't exist
@@ -119,7 +119,7 @@ if os.path.isdir(DEFAULT_CODE_DIR):
 
 # Shared helpers: the folder layout for one city (CityRunPaths), the matrix type
 # names, and the city_metadata.json index.
-from pipeline_common_260801 import (
+from pipeline_common import (
     ALL_DERIVED_MATRIX_TYPES,
     CityRunPaths,
     resolve_matrix_types,
@@ -127,7 +127,7 @@ from pipeline_common_260801 import (
 )
 # Checks on saved outputs. Each validate_stepN returns "complete" or "absent" (or
 # "skipped" for Step 1) and stops the run if the outputs are partial or don't match.
-from pipeline_validation_260801 import (
+from pipeline_validation import (
     validate_requested_step_prerequisites,
     validate_step1,
     validate_step2,
@@ -675,12 +675,12 @@ def main() -> None:
     # of the file. A dry run then needs none of them, and Steps 5, 6 and 7 (which
     # need Giotto-TDA, the mapping packages and GUDHI) are imported only when they
     # are requested. Steps 1-4 are imported together for the city loop below.
-    from step01_extract_PharmacyCityState_260801 import extract_pharmacy_data
-    from step02_attach_censustract_info_260801 import attach_census_info
-    from step03_build_raw_walk_and_drive_time_matrices_260801 import (
+    from step01_extract_PharmacyCityState import extract_pharmacy_data
+    from step02_attach_censustract_info import attach_census_info
+    from step03_build_raw_walk_and_drive_time_matrices import (
         compute_matrices_dijkstra,
     )
-    from step04_build_travel_matrices_260801 import build_all_derived_matrices
+    from step04_build_travel_matrices import build_all_derived_matrices
 
     # 2. Steps 1-4, city by city --------------------------------------------------
     # Each step below follows the same pattern:
@@ -810,7 +810,7 @@ def main() -> None:
 
     # 3. Step 5, across all cities ------------------------------------------------
     if 5 in steps:
-        from step05_run_TDA_260801 import (
+        from step05_run_TDA import (
             build_scenario_plan_draft,
             execute_saved_scenario_plan,
             save_scenario_plan,
@@ -872,7 +872,7 @@ def main() -> None:
     # skip map files that already exist, draw the missing ones, and stop if the
     # saved map settings differ from the current ones.
     if 6 in steps:
-        from step06_pharmacy_mapping_260801 import create_city_maps, create_scenario_maps
+        from step06_pharmacy_mapping import create_city_maps, create_scenario_maps
 
         for paths in paths_list:
             # The main map and the GIF use the pharmacy coordinates from Step 2.
@@ -902,7 +902,7 @@ def main() -> None:
     # complete and still match the Step 5 results, and stops if a Step 5 result
     # it needs is missing or incomplete.
     if 7 in steps:
-        from step07_compare_TDA_scenarios_260801 import compare_city_scenarios
+        from step07_compare_TDA_scenarios import compare_city_scenarios
 
         for paths in paths_list:
             result = compare_city_scenarios(paths)

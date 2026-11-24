@@ -170,7 +170,7 @@ from typing import Any
 
 import pandas as pd
 
-from pipeline_common_260801 import (
+from pipeline_common import (
     ANALYSIS_TAG_COLUMN,
     utc_now_iso,
     validate_analysis_tag,
@@ -805,7 +805,7 @@ def tie_census_info(*args, **kwargs):
 
 
 # Run Step 2 for one city from the command line, without Step 0. For example:
-#   python step02_attach_censustract_info_260801.py pharmacy_data.csv step02_census
+#   python step02_attach_censustract_info.py pharmacy_data.csv step02_census
 #       Milwaukee WI test_261011
 # The Census API key is read from the CENSUS_API_KEY environment variable unless
 # --census-api-key is given. Note: --acs-year defaults to 2022 here, while the

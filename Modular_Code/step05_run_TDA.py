@@ -182,7 +182,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from pipeline_common_260801 import (
+from pipeline_common import (
     ANALYSIS_TAG_COLUMN,
     CityRunPaths,
     canonical_json,
@@ -1550,6 +1550,6 @@ def execute_saved_scenario_plan(
 # for all cities together.
 if __name__ == "__main__":
     raise SystemExit(
-        "Run Step 5 through step00_main_process_flow_260801.py so the complete "
+        "Run Step 5 through step00_main_process_flow.py so the complete "
         "multi-city scenario plan is validated before persistent homology begins."
     )

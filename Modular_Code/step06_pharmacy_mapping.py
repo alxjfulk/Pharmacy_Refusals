@@ -167,7 +167,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from pipeline_common_260801 import (
+from pipeline_common import (
     ANALYSIS_TAG_COLUMN,
     CityRunPaths,
     file_sha256,
@@ -399,7 +399,7 @@ def create_city_maps(
     }
     if paths.step06_metadata.exists():
         # An earlier Step 6 run finished for this city, so it must match this one.
-        from pipeline_common_260801 import read_json
+        from pipeline_common import read_json
         saved = read_json(paths.step06_metadata)
         if saved.get(ANALYSIS_TAG_COLUMN) != paths.analysis_run_tag:
             raise ValueError("Step 6 metadata belongs to another analysis_run_tag.")
