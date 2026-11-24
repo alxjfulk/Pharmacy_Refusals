@@ -18,7 +18,7 @@ from typing import Any, Iterable
 import numpy as np
 import pandas as pd
 
-from pipeline_common_260801 import (
+from pipeline_common import (
     ALL_DERIVED_MATRIX_TYPES,
     ANALYSIS_TAG_COLUMN,
     CityRunPaths,
