@@ -430,14 +430,14 @@ def build_all_derived_matrices(
     output_folder: str | os.PathLike[str],
     *,
     analysis_run_tag: str,
-    drive_parking_penalty_minutes: float = 5.0,
+    drive_parking_penalty_minutes: float = 2.5,
     input_time_unit: str = "seconds",
 ) -> dict[str, Any]:
     """Build and save all six Step 4 matrices for one city.
 
     Step 0 calls this once per city. The numbered comments below match the
     numbered list at the top of this file. As in apply_drive_parking_penalty, the
-    5.0 default only applies when Step 4 is run on its own.
+    2.5 default only applies when Step 4 is run on its own.
     """
     manifest_path = Path(manifest_path)
     walk_path = Path(walk_matrix_path)
@@ -557,7 +557,7 @@ if __name__ == "__main__":
     parser.add_argument("drive_matrix")
     parser.add_argument("output_folder")
     parser.add_argument("analysis_run_tag")
-    parser.add_argument("--parking-penalty-minutes", type=float, default=5.0)
+    parser.add_argument("--parking-penalty-minutes", type=float, default=2.5)
     args = parser.parse_args()
     build_all_derived_matrices(
         args.manifest,

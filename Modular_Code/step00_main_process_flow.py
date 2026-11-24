@@ -20,7 +20,7 @@ shares it, and each city's outputs go in their own folder:
     <ANALYSIS_OUTPUT_ROOT>/analysis_runs/<ANALYSIS_RUN_TAG>/<CityState>/stepNN_.../
 
 The tag is also part of every pharmacy ID (for example
-MilwaukeeWI_test_261011_P0001, where 261011 is the run tag), so outputs from different runs can't be mixed.
+MilwaukeeWI_test_261011_P0001, where test_261011 is the run tag), so outputs from different runs can't be mixed.
 
 If there is no folder for the specified run tag yet, a new run starts. If the folder exists, the
 run continues where it left off. For each requested step and city:
