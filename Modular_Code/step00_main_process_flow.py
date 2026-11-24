@@ -112,7 +112,7 @@ from pathlib import Path
 # below find those modules when this file is run from Spyder, and makes OSMnx put
 # its download cache (./cache) in the code folder. If the folder doesn't exist
 # (for example on another computer), nothing changes, and the imports only work
-# if Python can already find the modules (e.g. when run from the code folder).
+# if Python can already find the modules (e.g. when run from the code folder). This may need to be updated once I start using Git more consistently
 DEFAULT_CODE_DIR = r"C:\Users\bigfo\OneDrive\Desktop\Pharmacy Refusals Stuff\modular_code\testing\Pharmacy_Refusals_Pipeline_260801\pharmacy_pipeline_260801"
 if os.path.isdir(DEFAULT_CODE_DIR):
     os.chdir(DEFAULT_CODE_DIR)
