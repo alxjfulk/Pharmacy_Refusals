@@ -248,9 +248,9 @@ MAX_DISTANCE_MILES = 20.0
 # Step 2: the American Community Survey (ACS) 5-year release to use, named by its
 # last year (2022 = the 2018-2022 estimates). It supplies tract population,
 # household vehicles and poverty counts. 2022 was the most recent release the last
-# time I checked, but that was a while ago. (Step 2's own default is 2024; this
+# time I checked, but that was a while ago. I recently updated it to 2024, but have not tested this thoroughly. (Step 2's own default is 2024; this
 # value is the one Step 0 passes.)
-ACS_YEAR = 2022
+ACS_YEAR = 2024
 
 
 # =============================================================================

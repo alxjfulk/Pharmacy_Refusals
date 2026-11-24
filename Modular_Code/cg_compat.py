@@ -32,7 +32,7 @@ DEFAULT_BENCHMARK = "Public_AR_Current"
 DEFAULT_VINTAGE = "Current_Current"
 DEFAULT_TIMEOUT = 30  # seconds
 
-# You can bump the ACS vintage centrally here; override per-call if needed.
+# The main process flow sets the ACS year. As of 11/23/2026, it is set to 2022.
 DEFAULT_ACS_VINTAGE = 2025
 DEFAULT_ACS_DATASET = "acs5"
 

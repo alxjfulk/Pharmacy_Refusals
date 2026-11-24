@@ -188,7 +188,7 @@ def apply_drive_parking_penalty(
     if penalty_minutes is None or float(penalty_minutes) <= 0:
         np.fill_diagonal(drive, 0.0)
         return drive
-    # Converting from input unit to seconds.
+    # Convert the penalty from minutes to the matrix's time unit (seconds).
     unit = str(input_time_unit).strip().lower()
     factors = {"seconds": 60.0, "minutes": 1.0, "hours": 1.0 / 60.0}
     if unit not in factors:

@@ -131,7 +131,7 @@ so the printed WARNING is the only sign.
 NOTES AND KNOWN ISSUES
 ----------------------
 - Known issue (e): if the Census Geocoder request fails for a pharmacy (for
-  example during a brief network outage), that pharmacy is counted in
+  example during a brief network outage or after attempting at least 5 times), that pharmacy is counted in
   ''geocoder_failures'' and silently dropped. Step 0 then treats Step 2 as
   complete, so rerunning with the same ANALYSIS_RUN_TAG does not retry it.
   Check the count in step02_metadata.json.
@@ -203,9 +203,7 @@ except Exception as exc:
     states = None
     _CENSUS_IMPORT_ERROR = exc
 
-# cg_compat.py (in the pipeline folder): asks the Census Geocoder which tract
-# contains a point. It uses the censusgeocode package when that works, and
-# otherwise calls the Census Geocoder website directly.
+# cg_compat.py asks the Census Geocoder website which tract contains a point. It replaces the censusgeocode package.
 try:
     import cg_compat as cg
     _CG_IMPORT_ERROR = None
@@ -617,8 +615,8 @@ def attach_census_info(
             counters["invalid_coordinates"] += 1
             continue
         # Ask the Census Geocoder which tract contains the point (one web request;
-        # x = longitude, y = latitude). Known issue (e): any failure here is
-        # counted and the pharmacy is skipped, with no retry.
+        # x = longitude, y = latitude). Known issue (e): any failure here after at least 5 attempts is
+        # counted and the pharmacy is skipped.
         try:
             result = cg.coordinates(x=lon, y=lat)
             tracts = result.get("Census Tracts", []) if isinstance(result, dict) else []
