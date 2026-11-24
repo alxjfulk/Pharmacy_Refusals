@@ -9,7 +9,7 @@ Edit the settings in sections 1-7 below, then run this file using whatever pytho
     Step 3  raw one-way walk and drive travel times between pharmacies (OSMnx)
     Step 4  calculate the six modified distance matrices using the raw matrices from Step 3 (walk, drive, multimodal; dtilde and d)
     Step 5  persistent homology (Giotto-TDA) for the baseline and removal scenarios
-    Step 6  maps showing pharmacies in each city - this step is a bit redundant since Step 7 also generates maps
+    Step 6  maps showing pharmacies in each city 
     Step 7  each scenario's persistence diagram compared with the baseline full set of pharmacies (using the GUDHI package)
 
 ANALYSIS RUNS AND ''ANALYSIS_RUN_TAG''
@@ -38,7 +38,7 @@ saved (see below), choose a new tag.
 
 HOW TO USE ''RUN_STEPS''
 ------------------------
-''RUN_STEPS'' can hold any of the step numbers 1 to 7. The steps always run in whatever order you type them in, not necessarily sequentially. Each step needs the output of one
+''RUN_STEPS'' can hold any of the step numbers 1 to 7. Each step needs the output of one
 earlier step:
 
     Step 2 needs Step 1     Step 3 needs Step 2     Step 4 needs Step 3
